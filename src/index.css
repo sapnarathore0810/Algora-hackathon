@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --background: 222 25% 10%;
+    --foreground: 220 20% 90%;
+
+    --card: 222 20% 14%;
+    --card-foreground: 220 20% 92%;
+
+    --popover: 222 20% 14%;
+    --popover-foreground: 220 20% 92%;
+
+    --primary: 210 60% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 15% 20%;
+    --secondary-foreground: 220 20% 85%;
+
+    --muted: 222 15% 18%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 222 15% 22%;
+    --accent-foreground: 220 20% 90%;
+
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 15% 22%;
+    --input: 222 15% 20%;
+    --ring: 210 60% 55%;
+
+    --radius: 1rem;
+
+    /* Crisis status colors */
+    --crisis-red: 0 72% 58%;
+    --crisis-amber: 38 92% 55%;
+    --crisis-green: 152 60% 48%;
+    --crisis-blue: 210 60% 55%;
+
+    /* Glass effect */
+    --glass-bg: 222 20% 16%;
+    --glass-border: 222 15% 25%;
+    --glass-glow: 210 60% 55%;
+
+    /* Warm accent */
+    --warm: 24 80% 55%;
+    --warm-foreground: 0 0% 100%;
+
+    --sidebar-background: 222 25% 8%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-primary: 210 60% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 15% 16%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 222 15% 20%;
+    --sidebar-ring: 210 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 shadow-lg;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    @apply border-primary/30 shadow-xl;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 20px hsl(var(--glass-glow) / 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .status-verified {
+    @apply bg-[hsl(var(--crisis-green)/0.15)] text-[hsl(var(--crisis-green))] border border-[hsl(var(--crisis-green)/0.3)];
+  }
+
+  .status-suspicious {
+    @apply bg-[hsl(var(--crisis-amber)/0.15)] text-[hsl(var(--crisis-amber))] border border-[hsl(var(--crisis-amber)/0.3)];
+  }
+
+  .status-fake {
+    @apply bg-[hsl(var(--destructive)/0.15)] text-destructive border border-destructive/30;
+  }
+
+  .priority-high {
+    @apply text-[hsl(var(--crisis-red))];
+  }
+
+  .priority-medium {
+    @apply text-[hsl(var(--crisis-amber))];
+  }
+
+  .priority-low {
+    @apply text-[hsl(var(--crisis-green))];
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 15px hsl(var(--crisis-blue) / 0.2), 0 0 30px hsl(var(--crisis-blue) / 0.1);
+  }
+
+  .warm-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--warm)));
+  }
+}
